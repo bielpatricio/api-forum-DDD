@@ -1,7 +1,7 @@
-import { InMemoryAnswersRepository } from 'test/repositories/in-memory-answers-repository';
-import { DeleteAnswerUseCase } from './delete-answer';
-import { UniqueEntityId } from '@/core/entities/unique-entity-id';
-import { makeAnswer } from 'test/factories/make-answer';
+import { InMemoryAnswersRepository } from 'test/repositories/in-memory-answers-repository'
+import { DeleteAnswerUseCase } from './delete-answer'
+import { UniqueEntityId } from '@/core/entities/unique-entity-id'
+import { makeAnswer } from 'test/factories/make-answer'
 
 let inMemoryAnswersRepository: InMemoryAnswersRepository
 let sut: DeleteAnswerUseCase
@@ -13,9 +13,12 @@ describe('Delete Answer', () => {
   })
 
   it('should be able to delete a answer by id', async () => {
-    const newAnswer = makeAnswer({
-      authorId: new UniqueEntityId('author-1'),
-    }, new UniqueEntityId('answer-1'))
+    const newAnswer = makeAnswer(
+      {
+        authorId: new UniqueEntityId('author-1'),
+      },
+      new UniqueEntityId('answer-1'),
+    )
 
     await inMemoryAnswersRepository.create(newAnswer)
 
@@ -28,9 +31,12 @@ describe('Delete Answer', () => {
   })
 
   it('should not be able to delete a answer from another user', async () => {
-    const newAnswer = makeAnswer({
-      authorId: new UniqueEntityId('author-1'),
-    }, new UniqueEntityId('answer-1'))
+    const newAnswer = makeAnswer(
+      {
+        authorId: new UniqueEntityId('author-1'),
+      },
+      new UniqueEntityId('answer-1'),
+    )
 
     await inMemoryAnswersRepository.create(newAnswer)
 

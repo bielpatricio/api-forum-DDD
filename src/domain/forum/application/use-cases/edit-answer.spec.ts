@@ -1,7 +1,7 @@
-import { InMemoryAnswersRepository } from 'test/repositories/in-memory-answers-repository';
-import { makeAnswer } from 'test/factories/make-answer';
-import { EditAnswerUseCase } from './edit-answer';
-import { UniqueEntityId } from '@/core/entities/unique-entity-id';
+import { InMemoryAnswersRepository } from 'test/repositories/in-memory-answers-repository'
+import { makeAnswer } from 'test/factories/make-answer'
+import { EditAnswerUseCase } from './edit-answer'
+import { UniqueEntityId } from '@/core/entities/unique-entity-id'
 
 let inMemoryAnswersRepository: InMemoryAnswersRepository
 let sut: EditAnswerUseCase
@@ -13,9 +13,12 @@ describe('Edit Answer', () => {
   })
 
   it('should be able to edit a answer by id', async () => {
-    const newAnswer = makeAnswer({
-      authorId: new UniqueEntityId('author-1'),
-    }, new UniqueEntityId('answer-1'))
+    const newAnswer = makeAnswer(
+      {
+        authorId: new UniqueEntityId('author-1'),
+      },
+      new UniqueEntityId('answer-1'),
+    )
 
     await inMemoryAnswersRepository.create(newAnswer)
 
@@ -31,9 +34,12 @@ describe('Edit Answer', () => {
   })
 
   it('should not be able to edit a answer from another user', async () => {
-    const newAnswer = makeAnswer({
-      authorId: new UniqueEntityId('author-1'),
-    }, new UniqueEntityId('answer-1'))
+    const newAnswer = makeAnswer(
+      {
+        authorId: new UniqueEntityId('author-1'),
+      },
+      new UniqueEntityId('answer-1'),
+    )
 
     await inMemoryAnswersRepository.create(newAnswer)
 
