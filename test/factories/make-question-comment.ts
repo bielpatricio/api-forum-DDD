@@ -10,7 +10,7 @@ export function makeQuestionComment(
   override: Partial<QuestionCommentProps> = {},
   id?: UniqueEntityId,
 ) {
-  const questioncomment = QuestionComment.create(
+  const questionComment = QuestionComment.create(
     {
       content: faker.lorem.text(),
       authorId: new UniqueEntityId(),
@@ -20,5 +20,5 @@ export function makeQuestionComment(
     id,
   )
 
-  return questioncomment
+  return questionComment
 }
