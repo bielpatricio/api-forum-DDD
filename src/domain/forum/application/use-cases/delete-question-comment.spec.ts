@@ -1,7 +1,7 @@
 import { makeQuestionComment } from 'test/factories/make-question-comment'
 import { DeleteQuestionCommentUseCase } from './delete-question-comment'
 import { InMemoryQuestionsCommentsRepository } from 'test/repositories/in-memory-question-comments-repository'
-import { NotAllowedError } from './errors/not-allowed-error'
+import { NotAllowedError } from '@/core/erros/errors/not-allowed-error'
 
 let inMemoryQuestionsRepository: InMemoryQuestionsCommentsRepository
 let sut: DeleteQuestionCommentUseCase
